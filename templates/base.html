@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="{% static 'scripts/theme.js' %}" defer></script>
+    <script src="{% static 'scripts/header.js' %}" defer></script>
+    <script src="{% static 'scripts/parallax.js' %}" defer></script>
+    {% block script %}{% endblock %}
+    <title>{% block page_title %} Fallback title {% endblock %}</title>
+    {% comment %} FOR GLOBAL STATIC FILES, REMEMBER TO SET UP STATICFILES_DIRS INSIDE apps\api\config\settings.py {% endcomment %}
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}"></link>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+
+      @theme inline {
+        --radius: var(--radius);
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --color-chart-1: var(--chart-1);
+        --color-chart-2: var(--chart-2);
+        --color-chart-3: var(--chart-3);
+        --color-chart-4: var(--chart-4);
+        --color-chart-5: var(--chart-5);
+        --color-sidebar: var(--sidebar);
+        --color-sidebar-foreground: var(--sidebar-foreground);
+        --color-sidebar-primary: var(--sidebar-primary);
+        --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+        --color-sidebar-accent: var(--sidebar-accent);
+        --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+        --color-sidebar-border: var(--sidebar-border);
+        --color-sidebar-ring: var(--sidebar-ring);
+      }
+    </style>
+    {% comment %} FOR SPECIFIC STATIC FILES {% endcomment %}
+    {% block css %}{% endblock %}
+  </head>
+
+  <body>
+    {% block header %}
+      {% include 'components/header.html' %}
+    {% endblock %}
+    {% comment %} <div id="header-spacer"></div> {% endcomment %}
+    <main class="flex flex-col gap-40 max-w-6xl mx-auto w-full px-6 py-20">
+      {% block body_content %}
+      <p>Fallback content</p>
+      {% endblock %}
+    </main>
+    {% block footer %}
+      {% include 'components/footer.html' %}
+    {% endblock %}
+  </body>
+
+</html>

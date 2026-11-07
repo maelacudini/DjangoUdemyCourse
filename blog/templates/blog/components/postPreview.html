@@ -1,0 +1,17 @@
+{% load static %}
+
+<div class="relative space-y-4">
+  <img
+    src="{{ post.image.url }}"
+    alt={{post.title}}
+    class="w-full aspect-square object-cover"
+  />
+  <p class="uppercase text-sm text-muted-foreground">{{post.created_at|date:"D d M Y" }}</p>
+  <div class="space-y-1">
+    <h3 class="text-xl">{{post.title}}</h3>
+    <p>{{post.excerpt}}</p>
+  </div>
+  <a href="{% url "post" post.slug %}" class="absolute inset-0">
+    <span class="sr-only">{{post.title}}</span>
+  </a>
+</div>

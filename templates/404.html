@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block page_title %}Page not found{% endblock %}
+
+{% block body_content %}
+  <div class="h-dvh flex flex-col items-center justify-center text-center gap-4">
+    <h1 class="text-6xl">Uh-oh...</h1>
+    <p class="text-xl">Something went wrong and we could not find the page requested.</p>
+    <a href="{% url 'home' %}" class="button button-primary">Back to the homepage</a>
+  </div>
+{% endblock %}
